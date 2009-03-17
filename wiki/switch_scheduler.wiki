@@ -1,4 +1,4 @@
-#thoughts about this topic
+#summary thoughts about this topic
 
 = Introduction =
 
@@ -11,8 +11,8 @@ I may load all the modules of sched to memory while loading kernel.
 
 using array to story the addr of schedulers.
 
-#sched_arr
-void (*scheds)(void);
+#label sched_arr
+void (\*scheds)(void);
 
 || sched1 ||
 || sched2 ||
