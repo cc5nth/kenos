@@ -1,0 +1,11 @@
+#thoughts about this topic
+
+= Introduction =
+
+since I have not implemented reading from harddisk in pm mode.
+I may load all the modules of sched to memory while loading kernel.
+
+
+= Details =
+
+using array to story the addr of schedulers.
