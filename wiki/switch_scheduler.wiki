@@ -1,17 +1,17 @@
 #summary thoughts about this topic
 
+__TOC__
 = Introduction =
 
 since I have not implemented reading from harddisk in pm mode.
 I may load all the modules of sched to memory while loading kernel.
 
-[#sched_arr]
 
+__TOC__
 = Details =
 
 using array to story the addr of schedulers.
 
-#labels sched_arr
 
 {{{
 void (*scheds)(void);
