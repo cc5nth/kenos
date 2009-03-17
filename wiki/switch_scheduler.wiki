@@ -11,8 +11,11 @@ I may load all the modules of sched to memory while loading kernel.
 
 using array to story the addr of schedulers.
 
-#label sched_arr
-void (\*scheds)(void);
+#labels sched_arr
+
+{{{
+void (*scheds)(void);
+}}}
 
 || sched1 ||
 || sched2 ||
