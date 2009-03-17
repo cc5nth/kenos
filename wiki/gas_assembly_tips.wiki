@@ -1,5 +1,5 @@
-#summary One-sentence summary of this page.
 #labels assembly,att,syntax
+#introduce and compare the syntax of at&t and intel assembly.
 
 = Introduction =
 
