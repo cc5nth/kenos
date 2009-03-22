@@ -9,7 +9,18 @@
 
 Lines that begin with the # symbol are comments or 'commented out' data lines.
 
-This is essentially what you would see if you looked inside the bochsrc.bxrc file that I've made up for you. It's important for you to understand how to change lines that I've highlighted with a BLUE color (so you can change things like how Bochs boots up: with the floppy or from a hard drive image, and what type of floppy diskette or size etc. of hard drive. Depending upon how much memory you have available, you might want to change that setting too; it's at 32Meg right now):
+This is essentially what you would see if you looked inside the bochsrc.bxrc file 
+that I've made up for you. 
+
+It's important for you to understand how to change lines that 
+I've highlighted with a BLUE color (so you can change things like 
+how Bochs boots up: 
+with the floppy or from a hard drive image, 
+and what type of floppy diskette or size etc. 
+
+of hard drive. 
+Depending upon how much memory you have available, 
+you might want to change that setting too; it's at 32Meg right now):
 
 ########################################################################
 # bochsrc.txt file for DLX Linux disk image (with "tomsrtbt" book disk)!
