@@ -1,4 +1,5 @@
 #summary info about 8259A
+#labels 8259A,irq
 
 = Introduction =
 xx
