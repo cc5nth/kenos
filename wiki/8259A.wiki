@@ -1,0 +1,67 @@
+#summary info about 8259A
+
+= Introduction =
+xx
+
+
+
+= Details =
+
+在X86系统中通常集成2个8259A中断控制器，外接15个中断.<br>
+master 8259A: <br>
+IRQ0 -  timer/counter 0(8254定时器中断) <br>
+IRQ1 -  keyboard (键盘中断) <br>
+IRQ2  -  级联，连接slave 8259A的INTR pin. <br>
+IRQ3 -  COMA(串口1) <br>
+IRQ4 -  COMB(串口2) <br>
+IRQ5 -  LPT(并口) <br>
+IRQ6 -  Floppy <br>
+IRQ7  -  LPT <br>
+<br>
+slave 8259A: <br>
+IRQ8 -  RTC. <br>
+IRQ9    -  generic <br>
+IRQ10   -  generic <br>
+IRQ11   -  generic <br>
+IRQ12   -  PS/2 mouse <br>
+IRQ13   -  CPU FERR# <br> 
+IRQ14 -  primary IDE channel(主IDE通道) <br>
+IRQ15 -  secondary IDE channel(从IDE通道) <br>
+<br>
+8259A中断控制器编程端口  <br>
+ master 8259A: 0x20 <br>
+ slave 8259A:  0xA0 <br>
+在legacy BIOS中，通常编程 <br>
+master 8259A硬件中断IRQ0-7对应的中断向量号为vector 0x8-0x0f, <br>
+slave 8259A硬件中断IRQ8-15对应中断向量号vector 0x70-0x77 <br>
+<br>
+这部分详细可参考Intel SouthBridge Specifiction(8259 interrupt controller 部分) <br>
+及BIOS初始化init_8259_FAR。 <br>
+<br>
+在保护模式下，中断向量号0-31被分配给异常和NMI，32-255分配给外部中断或用户定义的中断。 <br>
+<br>
+Vector Describe <br>
+0 #DE，divide error,除法错误 DIV/IDIV除0 <br>
+1 #DB，Debug，调试  INT1指令 <br>
+2 NMI <br>
+3 #BP，breakpoint   INT3指令 <br>
+4 #OF，Overflow   INTO指令 <br>
+5 #BR，BOUND Range Exceeded <br>
+6 #UD, Undefined,Invalid Opcode <br>
+7 #NM, No Math-coprocessor <br>
+8 #DF, Double Fault <br>
+9 Coprocessor Segment Overrun <br>
+10 #TS, Invalid TSS <br>
+11 #NP, Segment Not Present <br>
+12 #SS, Stack Segment Fault <br>
+13 #GP, General Protect <br>
+14 #PF, Page Fault <br>
+15 reserved <br>
+16 #MF, X87 FPU Floating-point Error <br>
+17 #AC, Alignment Check <br>
+18 #MC, Machine Check <br>
+19 #XF, SIMD Floating-point Exception <br>
+20-31 reserved <br>
+<br>
+;我们也注意到，实模式和保护模式的中断向量0x08-0x0f不一样， <br>
+所以在进入保护模式启动中断前必须重新初始化实模式下的硬件中断向量。 <br>
