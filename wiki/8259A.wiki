@@ -28,6 +28,7 @@ IRQ12   -  PS/2 mouse <br>
 IRQ13   -  CPU FERR# <br> 
 IRQ14 -  primary IDE channel(主IDE通道) <br>
 IRQ15 -  secondary IDE channel(从IDE通道) <br>
+
 <br>
 8259A中断控制器编程端口  <br>
  master 8259A: 0x20 <br>
@@ -66,3 +67,10 @@ Vector Describe <br>
 <br>
 ;我们也注意到，实模式和保护模式的中断向量0x08-0x0f不一样， <br>
 所以在进入保护模式启动中断前必须重新初始化实模式下的硬件中断向量。 <br>
+
+
+----
+中斷控制器有優先順序. <br> 
+0 最大. 7 最小. 當有二個裝備同時發出 IRQ 時. 就由這個順序來決定誰先被服務.<br> 
+因 IRQ 2 被當成第二個中斷控制器的輸入. 所以整個中斷請求的順序為 : <br>
+0 , 1 , 2 ( 8 , 9 , 10 , 11 , 12 , 13 , 14 , 15 ) , 3 , 4 , 5 , 6 , 7.
