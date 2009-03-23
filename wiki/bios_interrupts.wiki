@@ -1,4 +1,5 @@
 #summary list of BIOS interrupts
+#labels bios,interrupt
 
 = list =
 
