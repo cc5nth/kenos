@@ -1,0 +1,10 @@
+#summary gcc and ld options to compiler 32bits code on x86_64
+
+= gcc =
+
+gcc -m32
+
+
+= ld =
+
+ld -melf_i386
