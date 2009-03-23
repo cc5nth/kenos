@@ -36,7 +36,7 @@
 || || AH=13h   Write String ||
 || INT 11h  || Installed by the BIOS; returns equipment list ||
 || INT 12h  || Installed by the BIOS or operating system; returns Conventional Memory Size ||
-|| INT 13h  || Low Level Disk Services; installed by the BIOS or operating system; called by software programs ||
+|| *INT 13h*  || Low Level Disk Services; installed by the BIOS or operating system; called by software programs ||
 || || AH=00h   Reset Disk Drives ||
 || || AH=01h   Check Drive Status ||
 || || AH=02h   Read Sectors From Drive ||
