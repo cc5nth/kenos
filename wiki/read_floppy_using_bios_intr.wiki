@@ -34,9 +34,49 @@ x % (BPB_SecPerTrk) = z.
      y >> 1 -> cylinder number
      y & 1 -> magnetic header number.
 */
+
+
+/* ==================================================================
+   Routine: ReadSector
+   Action: Read %cl Sectors from %ax sector(floppy) to %es:%bx (memory) 
+*/
+ReadSector:
+    push    %ebp
+    mov     %esp, %ebp
+    sub     $2, %esp        /* Reserve space for saving %cl */
+    mov     %cl, -2(%ebp)
+    push    %bx             /* Save bx */
+    mov     (BPB_SecPerTrk), %bl    /* %bl: the devider */
+    
+    div     %bl             /* 'y' in %al, 'z' in %ah */
+    
+    inc     %ah             /* z++, got start sector */
+    mov     %ah, %cl        /* %cl <- start sector number */
+    
+    mov     %al ,%dh        /* %dh <- 'y' */
+    shr     $1, %al         /* 'y'/BPB_NumHeads */
+    mov     %al, %ch        /* %ch <- Cylinder number(y>>1) */
+    
+    and     $1, %dh         /* %dh <- Magnetic header(y&1) */
+    pop     %bx             /* Restore %bx */
+    
+    /* Now, we got cylinder number in %ch, start sector number in %cl, magnetic
+       header in %dh. */
+    mov     (BS_DrvNum), %dl
+GoOnReading:
+    mov     $2, %ah
+    mov     -2(%ebp), %al   /* Read %al sectors */
+    int     $0x13           /* since %ah == 2, int 0x13 means reading */
+    
+    jc      GoOnReading     /* If CF set 1, mean read error, reread. */
+    add     $2, %esp
+    pop     %ebp
+    ret
+    /* end of ReadSector */
+
 }}}
 
 
 = Reference =
-http://en.wikipedia.org/wiki/INT_13
+http://en.wikipedia.org/wiki/INT_13 <br>
 http://en.wikipedia.org/wiki/BIOS_call
