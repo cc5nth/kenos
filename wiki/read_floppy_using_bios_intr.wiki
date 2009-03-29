@@ -5,3 +5,6 @@
 || intr Nr: || registers || for ||
 || 0x13     || ah = 0x0  || reset ||
 || 0x13     || ah = 0x2  al <- read Nr sectors, <br>dh <- Head Nr, dl<- drive Nr, <br>ch <- cylinder Nr, cl <- beginning sector Nr, <br>es:bx <- buffer || read from floopy to buffer ||
+
+= Reference =
+http://en.wikipedia.org/wiki/INT_13
