@@ -14,7 +14,6 @@
 #include "console.h"
 #include "global.h"
 #include "proto.h"
-#include "utils.h"
 
 
 /*======================================================================*
@@ -22,11 +21,6 @@
  *======================================================================*/
 PUBLIC int kenos_main()
 {
-	disp_str("----- init ata device -----\n");
-	ASSERT(1);
-	init_ide_dev();
-	disp_str("----- end of ata init -----\n");
-	
 	disp_str("-----\"kenos_main\" begins-----\n");
 
 	TASK*		p_task;
@@ -38,7 +32,6 @@ PUBLIC int kenos_main()
 	t_8		rpl;
 	int		eflags;
 	
-	// init the proc_table
 	for(i = 0; i< NR_TASKS + NR_PROCS; i++){
 		if (i < NR_TASKS) {	/* tasks */
 			p_task		= task_table + i;
@@ -92,21 +85,21 @@ PUBLIC int kenos_main()
 		selector_ldt += 1 << 3;
 	}
 	proc_table[0].ticks = proc_table[0].priority = 15;
-	proc_table[1].ticks = proc_table[1].priority = 5;
-	proc_table[2].ticks = proc_table[2].priority = 5;
-	proc_table[3].ticks = proc_table[3].priority = 5;
+	proc_table[1].ticks = proc_table[1].priority =  5;
+	proc_table[2].ticks = proc_table[2].priority =  5;
+	proc_table[3].ticks = proc_table[3].priority =  5;
 	
 	proc_table[1].nr_tty = 0;
-	proc_table[2].nr_tty = 0;
+	proc_table[2].nr_tty = 1;
 	proc_table[3].nr_tty = 1;
 
 	k_reenter = 0;
 	ticks = 0;
 	
-	p_proc_ready = proc_table;
-	
+	p_proc_ready	= proc_table;
+
 	init_clock();
-	
+
 	restart();
 
 	while(1){}
@@ -118,14 +111,9 @@ PUBLIC int kenos_main()
 void TestA()
 {
 //	int i = 0;
-//	sw_sched();
-//	hd_intr();
-	printf("<xxxxxxhd: %x>\n", get_hd_info());
-//	hd_xxx();
 	while(1){
 //		disp_str("A.");
-//		printf("<Ticks: %x>", get_ticks());
-//		sw_sched();
+		printf("<Ticks: %x>", get_ticks());
 		milli_delay(100);
 	}
 }
@@ -138,7 +126,7 @@ void TestB()
 	int i = 0;
 	while(1){
 //		disp_str("B.");
-//		printf("B");
+		printf("B");
 		milli_delay(100);
 	}
 }
@@ -152,7 +140,7 @@ void TestC()
 	int i = 0;
 	while(1){
 //		disp_str("C.");
-//		printf("C");
+		printf("C");
 		milli_delay(100);
 	}
 }

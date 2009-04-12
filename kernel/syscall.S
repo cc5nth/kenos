@@ -25,9 +25,6 @@
 .set INT_VECTOR_SYS_CALL, 0x90
 .set _NR_get_ticks,	0
 .set _NR_write,		1
-.set _NR_hd_xxx,	2
-.set _NR_get_hd_info,	3
-.set _NR_sw_sched,	4
 /* the same to the definition of sys_call_table in global.c */
 
 
@@ -37,9 +34,6 @@
 
 .globl get_ticks
 .globl write
-.globl hd_xxx
-.globl get_hd_info
-.globl sw_sched
 
 /* caution：%dx has been changed by save(), 
   so we cannot use %edx to pass para */
@@ -61,27 +55,4 @@ write:
 	int	$INT_VECTOR_SYS_CALL
 	ret
 
-
-
-/* hard disk interrupt */
-.type hd_intr, @function
-hd_xxx:
-	mov	$_NR_hd_xxx, %eax
-	int	$INT_VECTOR_SYS_CALL
-	ret
-
-
-/* get harddisk info */
-.type get_hd_info, @function
-get_hd_info:
-	mov	$_NR_get_hd_info, %eax
-	int	$INT_VECTOR_SYS_CALL
-	ret
-
-/* switch scheduler */
-.type sw_sched, @function
-sw_sched:
-	mov	$_NR_sw_sched, %eax
-	int	$INT_VECTOR_SYS_CALL
-	ret
 

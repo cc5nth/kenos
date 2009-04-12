@@ -171,7 +171,6 @@ csinit:
 /* ----- */
 .align 16
 hwint00:		/* Interrupt routine for irq 0 (the clock). */
-			/* system timer */
 	hwint_master	0
 
 .align 16
@@ -205,40 +204,10 @@ hwint07:		// Interrupt routine for irq 7 (printer)
 
 /* ------ hwint_slave ------ */
 .macro hwint_slave Irq
-//	push	\Irq
-//	call	spurious_irq
-//	add	$4, %esp
-//	hlt
-	call	save
-
-	/* do not allow irq \Irq */
-	inb	$INT_S_CTLMASK, %al
-	or	$(1 << (\Irq - 8 )), %al
-	outb	%al, $INT_S_CTLMASK
-	
-	/* reenable slave 8259, set EOI */
-	movb	$EOI, %al
-	outb	%al, $INT_S_CTL
-	
-	/* int will be turned off automatically, when cpu is responsing
-	  the int. 'sti' makes new int allowed */
-	sti
-	
-	/* the interrupt handler */
-	push	$(\Irq)
-	leal	irq_table, %eax
-	call	*(4 * (\Irq))(%eax)
-	pop	%ecx
-
-	cli
-	
-	/* allow irq 0 again */
-	inb	$INT_S_CTLMASK, %al
-	andb	$~(1 << (\Irq - 8 )), %al
-	outb	%al, $INT_S_CTLMASK
-	
-	ret	/* jmp to (call) restart_reenter when reenter, 
-		  otherwise, jmp to (call) restart */
+	push	\Irq
+	call	spurious_irq
+	add	$4, %esp
+	hlt
 .endm
 
 /* ----- */
@@ -268,12 +237,10 @@ hwint13:		// Interrupt routine for irq 13 (FPU exception)
 
 .align 16
 hwint14:		// Interrupt routine for irq 14 (AT winchester)
-			/* primary ide */
 	hwint_slave	14
 
 .align 16
 hwint15:		// Interrupt routine for irq 15
-			/* secondary ide */
 	hwint_slave	15
 
 
@@ -363,7 +330,7 @@ save:
 
 	mov	%esp, %esi	/* %eax = the addr of proc table */
 	
-	incl	(k_reenter)		/* k_reenter++ */
+	incl	(k_reenter)
 	cmpl	$0, (k_reenter)		/* if (k_reenter == 0) */
 	jne	.sv1
 

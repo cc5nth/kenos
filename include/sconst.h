@@ -26,9 +26,6 @@
  ***************************************************************************/
 
 
-#ifndef	_KENOS_SCONST_H_
-#define	_KENOS_SCONST_H_
-
 .set P_STACKBASE,	0
 .set GSREG,		P_STACKBASE
 .set FSREG,		(GSREG		+ 4)
@@ -56,7 +53,7 @@
 
 .set INT_M_CTL,		0x20	// I/O port for interrupt controller         <Master>
 .set INT_M_CTLMASK,	0x21	// setting bits in this port disables ints   <Master>
-.set INT_S_CTL,		0xA0	// I/O port for secondary interrupt controller  <Slave>
+.set INT_S_CTL,		0xA0	// I/O port for second interrupt controller  <Slave>
 .set INT_S_CTLMASK,	0xA1	// setting bits in this port disables ints   <Slave>
 
 .set EOI,	0x20	/* entry of interrupt */
@@ -65,7 +62,4 @@
 .set SELECTOR_FLAT_C,		0x08		//
 .set SELECTOR_TSS,		0x20		//
 .set SELECTOR_KERNEL_CS,	SELECTOR_FLAT_C
-
-
-#endif /* _KENOS_SCONST_H_ */
 

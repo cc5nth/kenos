@@ -67,4 +67,3 @@ PUBLIC void init_clock()
 	enable_irq(CLOCK_IRQ);	/* enable the clock interrupt of 8259A */
 }
 
-

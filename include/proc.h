@@ -5,8 +5,6 @@
                                                     Forrest Yu, 2005
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-#ifndef	_TINIX_PROC_H_
-#define	_TINIX_PROC_H_
 
 typedef struct s_stackframe {	// proc_ptr points here		↑Low
 	t_32	gs;		// ┓
@@ -69,9 +67,4 @@ typedef struct s_task {
 				STACK_SIZE_TESTA + \
 				STACK_SIZE_TESTB + \
 				STACK_SIZE_TESTC)
-
-EXTERN	void		(*schedule)();
-
-
-#endif /* _TINIX_PROC_H_ */
 

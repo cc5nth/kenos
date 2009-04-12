@@ -38,7 +38,7 @@ memcpy:
 	
 	mov	8(%ebp), %edi	/* dest */
 	mov	12(%ebp), %esi	/* src */
-	mov	16(%ebp), %ecx	/* counter: iSize */
+	mov	16(%ebp), %ecx	/* counter */
 .m_c1:
 	cmp	$0, %ecx
 	jz	.m_c2
@@ -58,7 +58,6 @@ memcpy:
 	pop	%ecx
 	pop	%edi
 	pop	%esi
-	
 	mov	%ebp, %esp
 	pop	%ebp
 	
@@ -91,7 +90,6 @@ memset:
 	pop	%ecx
 	pop	%edi
 	pop	%esi
-	
 	mov	%ebp, %esp
 	pop	%ebp
 
@@ -105,8 +103,8 @@ strcpy:
 	push	%ebp
 	mov	%esp, %ebp
 	
-	mov	12(%ebp), %esi	/* p_src */
-	mov	8(%ebp), %edi	/* p_dest */
+	mov	12(%ebp), %esi	/* src */
+	mov	8(%ebp), %edi	/* dest */
 .s_c1:
 	/* move byte by byte */
 	mov	(%esi), %al
