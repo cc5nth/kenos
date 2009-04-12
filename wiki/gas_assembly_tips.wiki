@@ -1,6 +1,8 @@
 #labels assembly,att,syntax
 #introduce and compare the syntax of at&t and intel assembly.
 
+<wiki:toc max_depth="1" />
+
 = Introduction =
 
 syntax
@@ -11,4 +13,5 @@ syntax
 .set mval, 0x7
 
 mval -> the addr of mval
+
 $mval == 0x7
