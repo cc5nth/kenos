@@ -6,9 +6,9 @@
 syntax
 
 
-= Rep =
+= .set =
 
-xx:
-  * xx *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+.set mval, 0x7
+
+mval -> the addr of mval
+$mval == 0x7
