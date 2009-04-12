@@ -18,17 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef	_KENOS_KLIBC_H_
-#define	_KENOS_KLIBC_H_
-
-#include "type.h"
-#include "const.h"
-
-/* klib.c */
-PUBLIC void delay(int time);
-PUBLIC void disp_int(int input);
-PUBLIC t_bool is_alphanumeric(char ch);
-
-
-#endif /* _KENOS_KLIBC_H_ */
-
+.code16
+.text
+	mov		$0xb800,%ax
+	movw	%ax,%gs
+	mov		$0xf,%ah
+	mov		$'K',%al
+	mov		%ax,%gs:((80*0+39)*2)
+	jmp		.

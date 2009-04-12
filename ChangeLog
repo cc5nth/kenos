@@ -1,13 +1,1 @@
-Wed Feb 18 16:45:00 2009  Cao, Chen  <cc.5nth@gmail.com>
-
-	* xx version: all the features of 《自己动手写操作系统》 are implemented.
-
-Tue Feb 17 20:45:00 2009  Cao, Chen  <cc.5nth@gmail.com>
-
-	* xx version: add interrupt processing mechanism. 
-	/* match arch 8. */
-
-Mon Feb 16 20:45:00 2009  Cao, Chen  <cc.5nth@gmail.com>
-
-	*init version: framework of boot loader kernel.
-
+init version.

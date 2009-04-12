@@ -1,10 +1,19 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Cao, Chen                                       *
+ * original Copyright (C) 2008 by Wenbo Yang 
+   <solrex@gmail.com> <http://solrex.cn>
+
+   This file is part of the source code of book "Write Your Own OS with Free
+   and Open Source Software". Homepage @ <http://share.solrex.cn/WriteOS/>.
+
+   This file is licensed under the GNU General Public License; either
+   version 3 of the License, or (at your option) any later version.
+ ***************************************************************************
+ *   Edit by Cao, Chen - 2009                                              *
  *   ken.ccao@gmail.com                                                    *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
+ *   the Free Software Foundation; either version 3 of the License, or     *
  *   (at your option) any later version.                                   *
  *                                                                         *
  *   This program is distributed in the hope that it will be useful,       *
@@ -18,17 +27,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-.set    BaseOfLoader,    0x9000    /* Section loading address of LOADER.BIN */
-.set    OffsetOfLoader,  0x0100    /* Loading offset of LOADER.BIN */
-
-.set	BaseOfLoaderPhyAddr, (BaseOfLoader * 0x10)
-
-.set	BaseOfKernelFile,	0x8000
-.set	OffsetOfKernelFile,	0x0000
-
-.set	BaseOfKernelFilePhyAddr, (BaseOfKernelFile * 0x10)
-.set	KernelEntryPointPhyAddr, 0x030400
-
-.set	PageDirBase, 0x200000
-.set	PageTblBase, 0x201000	/* 2M + 4K */
-
+SECTIONS
+{
+    . = 0x7c00;
+    
+    .text :
+    {
+        _ftext = .;
+    } = 0
+}

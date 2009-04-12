@@ -1,10 +1,19 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Cao, Chen                                       *
+ * original Copyright (C) 2008 by Wenbo Yang 
+   <solrex@gmail.com> <http://solrex.cn>
+
+   This file is part of the source code of book "Write Your Own OS with Free
+   and Open Source Software". Homepage @ <http://share.solrex.cn/WriteOS/>.
+
+   This file is licensed under the GNU General Public License; either
+   version 3 of the License, or (at your option) any later version.
+ ***************************************************************************
+ *   Edit by Cao, Chen - 2009                                              *
  *   ken.ccao@gmail.com                                                    *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
+ *   the Free Software Foundation; either version 3 of the License, or     *
  *   (at your option) any later version.                                   *
  *                                                                         *
  *   This program is distributed in the hope that it will be useful,       *
@@ -18,37 +27,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-/* 
- * sfile.S 
- * search files 
- */
-
-.section .text
-
-.globl	smodf
-
-
-/* void smodf(); 
- * search module file */
-.type smodf, @function
-smodf:
-	push	%ebp
-	mov	%esp, %ebp
-	
-	
-	/* Reset floppy */
-	xor	 %ah,%ah
-	xor	 %dl,%dl       /* %dl=0: floppy driver 0 */
-//	int	 $0x13         /* BIOS int 13h, ah=0: Reset driver 0 */
-	
-	
-	mov	%ebp, %esp
-	pop	%ebp
-
-	ret
-	
-/* end of smod() */
-
-
-
-
+SECTIONS
+{
+    . = 0x0100;
+    
+    .text :
+    {
+        _ftext = .;
+    } = 0
+}
