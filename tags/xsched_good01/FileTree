@@ -1,0 +1,133 @@
+kenos
+|-- AUTHORS
+|-- COPYING
+|-- ChangeLog
+|-- FileTree
+|-- INSTALL
+|-- Makefile
+|-- NEWS
+|-- README
+|-- TODO
+|-- bochsrc.bxrc
+|-- boot
+|   |-- Makefile
+|   |-- bochsrc.bxrc
+|   |-- boot.S
+|   |-- include
+|   |   |-- addr.h
+|   |   |-- lib.h
+|   |   `-- pm.h
+|   |-- loader.S
+|   |-- x86_boot.ld
+|   `-- x86_ldr.ld
+|-- doc
+|   |-- add_new_task_steps
+|   |-- add_sys_call
+|   |-- arch.png
+|   |-- boot
+|   |   |-- boot_S.txt
+|   |   `-- loader_S.txt
+|   |-- kenos
+|   |-- lkm
+|   |-- loaduserprog
+|   `-- schedule2
+|-- drv
+|   |-- hd.c
+|   `-- ide.c
+|-- fs
+|   |-- fatcmpfname.c
+|   |-- fatrdclus.c
+|   |-- fatrdfile.c
+|   |-- fatroot.c
+|   |-- fattabe.c
+|   |-- fattest.c
+|   `-- sfile.S
+|-- include
+|   |-- asm
+|   |   |-- io.h
+|   |   `-- system.h
+|   |-- console.h
+|   |-- const.h
+|   |-- drv
+|   |   |-- blk.h
+|   |   |-- hd.h
+|   |   |-- hdreg.h
+|   |   `-- ide.h
+|   |-- fs
+|   |   |-- fat12hdr.h
+|   |   |-- fat1x.h
+|   |   |-- fatcmpfname.h
+|   |   |-- fatrdclus.h
+|   |   |-- fatrdfile.h
+|   |   |-- fatroot.h
+|   |   |-- fattabe.h
+|   |   `-- fattest.h
+|   |-- global.h
+|   |-- kenos
+|   |   `-- config.h
+|   |-- keyboard.h
+|   |-- keymap.h
+|   |-- klibc.h
+|   |-- klibs.h
+|   |-- ksync.h
+|   |-- mod
+|   |   |-- manmod.h
+|   |   |-- modconst.h
+|   |   `-- modtypes.h
+|   |-- proc.h
+|   |-- protect.h
+|   |-- proto.h
+|   |-- sconst.h
+|   |-- string.h
+|   |-- tty.h
+|   |-- type.h
+|   |-- utils
+|   |   |-- assert.h
+|   |   |-- delay.h
+|   |   |-- kecho.h
+|   |   |-- mem2num.h
+|   |   `-- perror.h
+|   `-- utils.h
+|-- kernel
+|   |-- clock.c
+|   |-- console.c
+|   |-- global.c
+|   |-- i8259.c
+|   |-- kernel.S
+|   |-- keyboard.c
+|   |-- ksync.c
+|   |-- main.c
+|   |-- panic.c
+|   |-- printf.c
+|   |-- proc.c
+|   |-- protect.c
+|   |-- start.c
+|   |-- syscall.S
+|   |-- tty.c
+|   |-- vsprintf.c
+|   `-- x86_ker.ld
+|-- lib
+|   |-- delay.c
+|   |-- kecho.c
+|   |-- klib.S
+|   |-- klib.c
+|   |-- mem2num.c
+|   |-- perror.c
+|   `-- string.S
+|-- module
+|   |-- Makefile
+|   |-- lib.h
+|   |-- manmod.c
+|   |-- nullxmod.c
+|   |-- x86_mod.ld
+|   |-- xmodint.S
+|   |-- xsched.c
+|   `-- xsched01.c
+`-- tools
+|-- Makefile
+|-- bochsrc.bxrc
+|-- boot.S
+|-- include
+|   `-- fat12hdr.h
+`-- x86_boot.ld
+
